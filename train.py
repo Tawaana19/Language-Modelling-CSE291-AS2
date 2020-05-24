@@ -71,6 +71,8 @@ def main(args):
     def kl_anneal_function(anneal_function, step):
         if anneal_function == 'identity':
             return 1
+        if anneal_function == 'anneal':
+            return min(step * 0.1, 1.)
 
     ReconLoss = torch.nn.NLLLoss(size_average=False, ignore_index=datasets['train'].pad_idx)
     def loss_fn(logp, target, length, mean, logv, anneal_function, step):
