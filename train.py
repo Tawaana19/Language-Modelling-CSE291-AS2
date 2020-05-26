@@ -67,13 +67,17 @@ def main(args):
 
     save_model_path = os.path.join(args.save_model_path, ts)
     os.makedirs(save_model_path)
+    
+    def sigmoid(x):
+        s=1/(1+np.exp(-x))
+        return s
 
     def kl_anneal_function(anneal_function, step):
         logger.info("%s %s",step, anneal_function)
         if anneal_function == 'identity':
             return 1
         if anneal_function == 'anneal':
-            return min(step * 0.1, 1.)
+            return sigmoid(step)
 
     ReconLoss = torch.nn.NLLLoss(size_average=False, ignore_index=datasets['train'].pad_idx)
     def loss_fn(logp, target, length, mean, logv, anneal_function, step):
