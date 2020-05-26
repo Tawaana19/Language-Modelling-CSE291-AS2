@@ -69,7 +69,7 @@ def main(args):
     os.makedirs(save_model_path)
 
     def kl_anneal_function(anneal_function, step):
-        logger.info(step, anneal_function)
+        logger.info("%s %s",step, anneal_function)
         if anneal_function == 'identity':
             return 1
         if anneal_function == 'anneal':
