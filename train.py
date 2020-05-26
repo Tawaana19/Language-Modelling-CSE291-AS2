@@ -128,7 +128,7 @@ def main(args):
 
                 # loss calculation
                 recon_loss, KL_loss, KL_weight = loss_fn(logp, batch['target'],
-                    batch['length'], mean, logv, args.anneal_function, step)
+                    batch['length'], mean, logv, args.anneal_function, epoch)
 
                 if split == 'train':
                     loss = (recon_loss + KL_weight * KL_loss)/batch_size
