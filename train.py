@@ -69,7 +69,7 @@ def main(args):
     os.makedirs(save_model_path)
     
     def sigmoid(x):
-        s=1/(1+np.exp(-x))
+        s=1/(1+math.exp(-x))
         return s
 
     def kl_anneal_function(anneal_function, step):
