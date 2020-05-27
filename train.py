@@ -78,7 +78,7 @@ def main(args):
         if anneal_function == 'identity':
             return 1
         if anneal_function == 'anneal':
-            if (step > 5):
+            if step < 5:
                 return 0
             else:
                 return 1
