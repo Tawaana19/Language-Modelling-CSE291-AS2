@@ -78,7 +78,10 @@ def main(args):
         if anneal_function == 'identity':
             return 1
         if anneal_function == 'anneal':
-            return step/10
+            if (step > 5):
+                return 0
+            else:
+                return 1
 
     ReconLoss = torch.nn.NLLLoss(size_average=False, ignore_index=datasets['train'].pad_idx)
     def loss_fn(logp, target, length, mean, logv, anneal_function, step):
